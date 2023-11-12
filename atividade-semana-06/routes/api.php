@@ -24,7 +24,7 @@ Route::prefix('pessoas')->group(function() {
 /* 
 maneira mais limpa de digitar esse codigo
 
-Route::resource('pessoa', [PessoasController::class])->only([
+Route::resource('pessoas', [PessoasController::class])->only([
     'index', - exibe todos
     'show',  - exibe um
     'store', - cadastra
