@@ -32,7 +32,7 @@ class PessoasController extends Controller
             ]);
 
             $pessoa = Pessoa::create($request->all());
-            $message = $pessoa->name . "cadastrado com sucesso";
+            $message = $pessoa->name . " cadastrado com sucesso";
             return $this->response($message, $pessoa);
         } catch (\Exception $exception) {
             return $this->response($exception->getMessage(), null, false, 500);
