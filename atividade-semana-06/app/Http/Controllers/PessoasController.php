@@ -50,7 +50,12 @@ class PessoasController extends Controller
 
             $pessoa = Pessoa::find($id);
             $pessoa->update($request->all());
-            $message = $pessoa->name . "atualizada com sucesso";
+
+            if(empty($pessoa)) {
+                return $this->response('Pessoa não encontrada', null, false, 404);
+            }
+
+            $message = $pessoa->name . "atualizado com sucesso";
             return $this->response($message, $pessoa);
         } catch (\Exception $exception) {
             return $this->response($exception->getMessage(), null, false, 500);
