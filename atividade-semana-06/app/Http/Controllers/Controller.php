@@ -12,9 +12,9 @@ class Controller extends BaseController
 
     public function response($message, $data, $status = true, $statusCode = 200) {
         $response = [
-            'sucess' => $status,
+            'success' => $status,
             'message' => $message,
-            'data' => $data
+            'data' => $data,
         ];
 
         return response($response, $statusCode);
