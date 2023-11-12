@@ -38,4 +38,8 @@ class PessoasController extends Controller
             return $this->response($exception->getMessage(), null, false, 500);
         }
     }
+
+    public function update($id, Request $request) {
+
+    }
 }
