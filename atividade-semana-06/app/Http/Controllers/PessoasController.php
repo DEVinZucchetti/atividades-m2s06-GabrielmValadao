@@ -39,7 +39,8 @@ class PessoasController extends Controller
         }
     }
 
-    public function update($id, Request $request) {
+    public function update($id, Request $request)
+    {
         try {
 
             $request->validate([
@@ -51,12 +52,26 @@ class PessoasController extends Controller
             $pessoa = Pessoa::find($id);
             $pessoa->update($request->all());
 
-            if(empty($pessoa)) {
+            if (empty($pessoa)) {
                 return $this->response('Pessoa não encontrada', null, false, 404);
             }
 
             $message = $pessoa->name . "atualizado com sucesso";
             return $this->response($message, $pessoa);
+        } catch (\Exception $exception) {
+            return $this->response($exception->getMessage(), null, false, 500);
+        }
+    }
+
+    public function destroy($id)
+    {
+        try {
+            $pessoa = Pessoa::find($id);
+            if(empty($pessoa)) {
+                return $this->response('Pessoa não encontrada', null, false, 404);
+            }
+            $success = Pessoa::destroy($id);
+           return $this->response("$pessoa->name excluído com sucesso!", null);
         } catch (\Exception $exception) {
             return $this->response($exception->getMessage(), null, false, 500);
         }

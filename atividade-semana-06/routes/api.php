@@ -15,11 +15,13 @@ use App\Http\Controllers\PessoasController;
 |
 */
 
-Route::prefix('pessoas')->group(function() {
+Route::prefix('pessoas')->group(function() { 
     Route::get('', [PessoasController::class, 'index']);
     Route::post('', [PessoasController::class, 'store']);
     Route::put('{id}', [PessoasController::class, 'update']);
+    Route::delete('{id}', [PessoasController::class, 'delete']);
 });
+
 
 /* 
 maneira mais limpa de digitar esse codigo
@@ -31,9 +33,4 @@ Route::resource('pessoas', [PessoasController::class])->only([
     'update', - atualiza
     'destroy' - destroi / deleta
 ]);
-
 */
-
-
-
-
