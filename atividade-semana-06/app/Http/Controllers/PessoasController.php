@@ -66,9 +66,12 @@ class PessoasController extends Controller
     public function destroy($id)
     {
         try {
-
+            $pessoa = Pessoa::find($id);
+            if(empty($pessoa)) {
+                return $this->response('Pessoa não encontrada', null, false, 404);
+            }
             $success = Pessoa::destroy($id);
-            $this->response('Pessoa excluida com sucesso', null);
+           return $this->response("$pessoa->name excluído com sucesso!", null);
         } catch (\Exception $exception) {
             return $this->response($exception->getMessage(), null, false, 500);
         }
