@@ -61,4 +61,15 @@ class PessoasController extends Controller
             return $this->response($exception->getMessage(), null, false, 500);
         }
     }
+
+    public function destroy($id) {
+        try {
+
+            
+            
+            
+        } catch (\Exception $exception) {
+            return $this->response($exception->getMessage(), null, false, 500);
+        }
+    }
 }
