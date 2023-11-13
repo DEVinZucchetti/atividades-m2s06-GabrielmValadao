@@ -16,9 +16,23 @@ use App\Http\Controllers\PessoasController;
 */
 
 Route::prefix('pessoas')->group(function() {
-    Route::get('', [PessoasController::class, 'all']);
+    Route::get('', [PessoasController::class, 'index']);
     Route::post('', [PessoasController::class, 'store']);
+    Route::put('{id}', [PessoasController::class, 'update']);
 });
+
+/* 
+maneira mais limpa de digitar esse codigo
+
+Route::resource('pessoas', [PessoasController::class])->only([
+    'index', - exibe todos
+    'show',  - exibe um
+    'store', - cadastra
+    'update', - atualiza
+    'destroy' - destroi / deleta
+]);
+
+*/
 
 
 
